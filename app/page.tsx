@@ -1,27 +1,58 @@
-import Image from "next/image";
+import logo from '../public/tennoheadlines.png'
+import Image from 'next/image';
+import { getWorldstateData } from './data';
+import VoidTrader from './ui/VoidTrader';
+
+getWorldstateData()
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="bg-mainBackground grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen  gap-16  font-[family-name:var(--font-geist-sans)] ">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-center w-full">
+      
         <Image
           className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
+          src={logo}
+          alt="website logo"
+          width={100}
           height={38}
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <h1 className='text-[#C4B36E]  font-bold text-xl '>
+          Tenno Headlines
+        </h1>
+
+        <div className='flex items-center justify-center flex-row w-full gap-16 flex-wrap'>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] xl:w-80 h-48 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Weekly Cycles</h1>
+          </div>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] xl:w-1/3 h-48 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Special Events</h1>
+          </div>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] xl:w-80 h-48 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Void Trader</h1>
+            <VoidTrader />
+          </div>
+        </div>
+        
+        <div className='flex  justify-center flex-row w-full gap-16 flex-wrap sm:h-[1000px] '>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] sm:w-80 sm:h-[450px] h-80 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Void Fissures</h1>
+          </div>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] sm:w-1/3 sm:h-[450px] h-80 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Bounties</h1>
+          </div>
+
+          <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] sm:w-80 sm:h-[450px] h-80 rounded-3xl w-full'>
+            <h1 className='text-white font-bold text-2xl p-3'>Alerts</h1>
+          </div>
+
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
