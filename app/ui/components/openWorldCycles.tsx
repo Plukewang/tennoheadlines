@@ -1,10 +1,44 @@
 'use client'
 
+export interface cetusCycle{
+    id:string,
+    activation: string,
+    expiry: string,
+    startString: string,
+    active: boolean,
+    isDay: boolean,
+    state: string,
+    timeLeft: string,
+    isCetus: boolean,
+    shortString: string
+}
 
-export default function OpenWorldCycles(cycles: any){
+export interface vallisCycle{
+    id:string,
+    expiry: string,
+    isDay: boolean,
+    timeLeft: string,
+    isWarm: boolean,
+}
+
+export interface cambionCycle{
+    id:string,
+    activation: string,
+    expiry: string,
+    active: boolean,
+    state: string,
+    timeLeft: string,
+}
+
+interface props {
+    cycles: [cetusCycle, vallisCycle, cambionCycle] | null
+}
+
+
+export default function OpenWorldCycles({cycles}: props){
     console.log(cycles)
 
-    let cycleList = cycles.cycles
+    let cycleList = cycles
     if(cycleList?.length) return (
     <ul className="flex flex-row text-white">
         <li className=" w-1/3">

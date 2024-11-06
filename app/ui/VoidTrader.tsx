@@ -1,17 +1,20 @@
 'use client'
-import { fetchVoidTrader } from "../lib/data/fetchVoidTrader";
+import { fetchVoidTrader, trader } from "../lib/data/fetchVoidTrader";
 import { useEffect, useState } from "react";
 
 
 export default function VoidTrader(){
     //gets just the void trader data. 
-    const [traderData, setTraderData] = useState<any>(null)
+    const [traderData, setTraderData] = useState<trader | null>(null)
     const fetchVoid = async () =>{
         const voidTraderData = await fetchVoidTrader()
         
         try{
-            setTraderData(voidTraderData)
-            return voidTraderData
+            if(voidTraderData){
+                setTraderData(voidTraderData)
+                return voidTraderData
+            }
+            
         }catch(error){
             console.log(error)
             return null

@@ -1,12 +1,16 @@
 'use client'
 
-export default function AlertsList(alerts: any){
-    console.log(alerts.alerts)
+import { MissionInterface } from "@/app/lib/data/fetchAlerts"
 
-    let alertList = alerts?.alerts
+interface props{
+    alerts: MissionInterface[] | null
+}
+
+export default function AlertsList({alerts}: props){
+    let alertList = alerts
     if (alertList) return (
         <ul className="my-3">
-            {alertList.length ? alertList?.map((alert: any, i: number)=>{
+            {alertList.length ? alertList?.map((alert: MissionInterface, i: number)=>{
 
                 return <li key = {i} className="my-3">
                     <h1 className = "text-white text-xl">{alert.mission.description}</h1>

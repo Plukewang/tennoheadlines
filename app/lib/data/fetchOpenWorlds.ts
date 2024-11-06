@@ -1,4 +1,6 @@
-export const fetchOpenWorlds: any = async () => {
+import { cambionCycle, cetusCycle, vallisCycle } from "@/app/ui/components/openWorldCycles"
+
+export const fetchOpenWorlds = async () => {
     //TODO: void trader json type to replace implicit any type above.
 
     try{//fetch viod trader status from warframe api and return the relevant data
@@ -6,10 +8,13 @@ export const fetchOpenWorlds: any = async () => {
         const vallisResult = await fetch("https://api.warframestat.us/pc/vallisCycle")
         const cambionResult = await fetch("https://api.warframestat.us/pc/cambionCycle")
 
-        const cetusJson = await cetusResult.json()
-        const vallisJson = await vallisResult.json()
-        const cambionJson = await cambionResult.json()
-        return [cetusJson, vallisJson, cambionJson]
+        const cetusJson: cetusCycle = await cetusResult.json()
+        const vallisJson: vallisCycle = await vallisResult.json()
+        const cambionJson: cambionCycle = await cambionResult.json()
+
+        const resJson: [cetusCycle, vallisCycle, cambionCycle] = [cetusJson, vallisJson, cambionJson]
+
+        return resJson
 
     }catch(error){
         console.error(error)

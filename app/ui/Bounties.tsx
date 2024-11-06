@@ -1,36 +1,45 @@
-import { deimosBounties, fetchBounties, solarisBounties } from "../lib/data/fetchSyndicates"
+'use client'
+import { useEffect, useState } from "react";
+import { bountyInfo, bountyList, deimosBounties, fetchBounties, solarisBounties } from "../lib/data/fetchSyndicates"
 import { OstronBounties } from "../lib/data/fetchSyndicates"
+import BountiesList from "./components/bountiesList";
 
 
-export default async function Bounties(){
+export default function Bounties(){
     //streams all the faction bounties separated by faction
-    const bountyData = await fetchBounties()
+    const [bountyData, setBountyData] = useState<bountyInfo[]| null>(null)
+
+    const getBountyData = async () =>{
+        try{
+             const bountyData = await fetchBounties()
+             if(bountyData){
+                const ostronInfo = OstronBounties(bountyData.ostron[0]) 
+                const solarisInfo = solarisBounties(bountyData.solaris[0])
+                const deimosInfo = deimosBounties(bountyData.entrati[0])
+
+                if(ostronInfo && solarisInfo && deimosInfo){
+                        setBountyData([ostronInfo, solarisInfo, deimosInfo])
+                }
+                
+             }
+        }catch(error){
+                console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        getBountyData()
+    },[])
+    
     const now = new Date().getTime() / 1000;
 
-    const ostronInfo = OstronBounties(bountyData.ostron[0])
-    const solarisInfo = solarisBounties(bountyData.solaris[0])
-    const deimosInfo = deimosBounties(bountyData.entrati[0])
+    
     //console.log(ostronInfo)
     return (
-            <ul className="flex-col w-3/4 items-center ">
-                <li className="flex-col ">
-
-                        <h1 className="text-white text-2xl text-left font-bold">Ostron</h1> 
-                        <h1 className="text-white text-xl text-left">{ostronInfo?.reward}</h1>
-                        <h2 className="text-white text-right">T{ostronInfo?.tier}</h2>
-                </li>
-                <li className="flex-col ">
-
-                        <h1 className="text-white text-2xl text-left  font-bold">Solaris</h1> 
-                        <h1 className="text-white text-xl text-left">{solarisInfo?.reward}</h1>
-                        <h2 className="text-white text-right">T{solarisInfo?.tier}</h2>
-                </li>
-                <li className="flex-col ">
-
-                        <h1 className="text-white text-2xl text-left  font-bold">Entrati</h1> 
-                        <h1 className="text-white text-xl text-left">{deimosInfo?.reward}</h1>
-                        <h2 className="text-white text-right">T{deimosInfo?.tier}</h2>
-                </li>
-            </ul>
+            <BountiesList 
+                Ostron={bountyData?.[0] || null}
+                Solaris={bountyData?.[1] || null}
+                Entrati={bountyData?.[2] || null}
+            />
     )
 }

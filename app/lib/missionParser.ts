@@ -1,5 +1,6 @@
 import { fetchBounties } from "./data/fetchSyndicates"
 import { sortBounties } from "./data/fetchSyndicates"
+import { voidFissure } from "./data/fetchVoidFissures"
 interface mission{
     id: string,
     activation: string,
@@ -28,7 +29,7 @@ export interface bounty{
 }
 
 
-export function parseVoidFissures(missions: mission[]): Array<bounty[]>{
+export function parseVoidFissures(missions: voidFissure[]): Array<bounty[]>{
     let lithFissures: bounty[] = []
     let mesoFissures: bounty[] = []
     let neoFissures: bounty[] = []

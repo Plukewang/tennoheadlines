@@ -14,21 +14,44 @@ export const fetchBounties: any = async () => {//uses different API since the of
 }
 
 interface bountyList{
-    ostron: any[]
-    solaris: any[]
-    entrati: any[]
-    holdfast: any[]
-    cavia: any[]
+    ostron: SyndicateBounties[]
+    solaris: SyndicateBounties[]
+    entrati: SyndicateBounties[]
+    holdfast: SyndicateBounties[]
+    cavia: SyndicateBounties[]
+}
+
+export interface RewardItem {
+    name: string;
+    type: string;
+    count: number;
+    chance: number;
+}
+
+export interface Job {
+    rewards: RewardItem[][];
+    minLevel: number;
+    maxLevel: number;
+    xpAmounts: number[];
+    rotation: string;
+}
+
+export interface SyndicateBounties {
+    id: string;
+    start: number;
+    end: number;
+    syndicate: string;
+    jobs: Job[];
 }
 
 export const sortBounties = (bounties: any) =>{
-    const bountiesList: any[] = bounties.bounties.data//data of all of the actual bounties
+    const bountiesList: SyndicateBounties[] = bounties.bounties.data//data of all of the actual bounties
     //console.log(bountiesList)
-    let ostronBounties: any[] = [],
-        solarisBounties: any[] = [],
-        entratiBounties: any[] = [],
-        holdfastBounties: any[] = [],
-        caviaBounties: any[]= []
+    let ostronBounties: SyndicateBounties[] = [],
+        solarisBounties: SyndicateBounties[] = [],
+        entratiBounties: SyndicateBounties[] = [],
+        holdfastBounties: SyndicateBounties[] = [],
+        caviaBounties: SyndicateBounties[]= []
 
     for(let bounty of bountiesList){
         //console.log(bounty.syndicate)
@@ -61,7 +84,7 @@ export const sortBounties = (bounties: any) =>{
     }
 }
 
-export const OstronBounties = (bounties: any) =>{
+export const OstronBounties = (bounties: SyndicateBounties) =>{
     //bounties is of structure id, start, end, syndicate, jobs array. Look through jobs array
     //we can hardcode this since the rotations are fixed and thus so are the rewards.
     //console.log(bounties.jobs[0].rotation)
@@ -75,7 +98,7 @@ export const OstronBounties = (bounties: any) =>{
     }
 }
 
-export const solarisBounties = (bounties: any) =>{
+export const solarisBounties = (bounties: SyndicateBounties) =>{
 
     switch(bounties.jobs[0].rotation){
         case "A": 
@@ -87,7 +110,7 @@ export const solarisBounties = (bounties: any) =>{
     }
 }
 
-export const deimosBounties = (bounties: any) =>{
+export const deimosBounties = (bounties: SyndicateBounties) =>{
 
     switch(bounties.jobs[0].rotation){
         case "A": 
