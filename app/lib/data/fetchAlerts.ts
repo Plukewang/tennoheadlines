@@ -1,7 +1,7 @@
 export const fetchAlerts = async () => {
-    //TODO: void trader json type to replace implicit any type above.
 
-    try{//fetch viod trader status from warframe api and return the relevant data
+
+    try{
         const fetchResult = await fetch("https://api.warframestat.us/pc/alerts")
         const resultJson: MissionInterface[] = await fetchResult.json()
         return resultJson
@@ -42,9 +42,9 @@ export interface Mission {
     isSharkwing: boolean;
     levelOverride: string;
     enemySpec: string;
-    advancedSpawners: any[];
-    requiredItems: any[];
-    levelAuras: any[];
+    advancedSpawners: [];
+    requiredItems: [];
+    levelAuras: [];
 }
 
 export interface MissionInterface {

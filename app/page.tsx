@@ -1,12 +1,12 @@
 import logo from '../public/tennoheadlines.png'
 import Image from 'next/image';
-import { getWorldstateData } from './data';
+
 import VoidTrader from './ui/VoidTrader';
 import VoidFissures from './ui/VoidFissures';
 import Bounties from './ui/Bounties';
 import Alerts from './ui/Alerts';
 import Cycles from './ui/Cycles';
-getWorldstateData()
+
 
 export default function Home() {
   return (
