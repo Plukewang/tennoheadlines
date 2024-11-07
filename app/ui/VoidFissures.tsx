@@ -1,10 +1,10 @@
 
 'use client'
-import { fetchVoidFissures, voidFissure } from "../lib/data/fetchVoidFissures";
+import { fetchVoidFissures } from "../lib/data/fetchVoidFissures";
 import { bounty, parseVoidFissures } from "../lib/missionParser";
 import ToggleDifficulty from "./components/difficultyToggle";
 import { Suspense, useEffect, useState } from "react";
-import FissureSkeleton from "./skeletons/FissuresSkeleton";
+
 
 export default function VoidFissures(){
     

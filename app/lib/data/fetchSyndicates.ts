@@ -1,26 +1,10 @@
-export const fetchBounties: any = async () => {//uses different API since the official warframe API is poopybutts : ((
-
-    try{//fetch fissure status and return the data.
-        const fetchResult = await fetch("https://api.tenno.tools/worldstate/pc/bounties")
-        const resultJson = await fetchResult.json()
-
-        const sortedResult = sortBounties(resultJson)
-
-        return sortedResult
-
-    }catch(error){
-        console.error(error)
-    }
-}
-
-interface bountyList{
+export interface bountyList{
     ostron: SyndicateBounties[]
     solaris: SyndicateBounties[]
     entrati: SyndicateBounties[]
     holdfast: SyndicateBounties[]
     cavia: SyndicateBounties[]
 }
-
 export interface RewardItem {
     name: string;
     type: string;
@@ -44,16 +28,40 @@ export interface SyndicateBounties {
     jobs: Job[];
 }
 
-export const sortBounties = (bounties: any) =>{
-    const bountiesList: SyndicateBounties[] = bounties.bounties.data//data of all of the actual bounties
+export const fetchBounties = async () => {//uses different API since the official warframe API is poopybutts : ((
+    
+
+    try{//fetch fissure status and return the data.
+        const fetchResult = await fetch("https://api.tenno.tools/worldstate/pc/bounties")
+        const resultJson = await fetchResult.json()
+
+        if(resultJson){
+            const resultBountiesList:SyndicateBounties[] = resultJson.bounties.data
+            const sortedResult:bountyList = sortBounties(resultBountiesList)
+    
+            return sortedResult
+        }
+        
+
+    }catch(error){
+        console.error(error)
+    }
+}
+
+
+
+
+
+export const sortBounties = (bounties: SyndicateBounties[]) =>{
+    const bountiesList: SyndicateBounties[] = bounties//data of all of the actual bounties
     //console.log(bountiesList)
-    let ostronBounties: SyndicateBounties[] = [],
+    const ostronBounties: SyndicateBounties[] = [],
         solarisBounties: SyndicateBounties[] = [],
         entratiBounties: SyndicateBounties[] = [],
         holdfastBounties: SyndicateBounties[] = [],
         caviaBounties: SyndicateBounties[]= []
 
-    for(let bounty of bountiesList){
+    for(const bounty of bountiesList){
         //console.log(bounty.syndicate)
         switch(bounty.syndicate){
             case "Ostron":
@@ -83,6 +91,11 @@ export const sortBounties = (bounties: any) =>{
         cavia: caviaBounties,
     }
 }
+
+export interface bountyInfo{
+    tier: number
+    reward: string
+} 
 
 export const OstronBounties = (bounties: SyndicateBounties) =>{
     //bounties is of structure id, start, end, syndicate, jobs array. Look through jobs array

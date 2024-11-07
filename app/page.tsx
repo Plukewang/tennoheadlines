@@ -40,7 +40,7 @@ export default function Home() {
             </h2>
 
             <h2 className='text-white font-bold text-xl p-3 '>
-                Movemeber: Men's Health Awareness
+                Movemeber: Men&#39;s Health Awareness
             </h2>
           </div>
 

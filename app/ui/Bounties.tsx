@@ -1,8 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
-import { bountyInfo, bountyList, deimosBounties, fetchBounties, solarisBounties } from "../lib/data/fetchSyndicates"
+import { bountyInfo, deimosBounties, fetchBounties, solarisBounties } from "../lib/data/fetchSyndicates"
 import { OstronBounties } from "../lib/data/fetchSyndicates"
 import BountiesList from "./components/bountiesList";
+
 
 
 export default function Bounties(){
@@ -31,8 +32,6 @@ export default function Bounties(){
         getBountyData()
     },[])
     
-    const now = new Date().getTime() / 1000;
-
     
     //console.log(ostronInfo)
     return (

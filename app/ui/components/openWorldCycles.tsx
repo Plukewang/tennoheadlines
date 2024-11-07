@@ -36,9 +36,7 @@ interface props {
 
 
 export default function OpenWorldCycles({cycles}: props){
-    console.log(cycles)
-
-    let cycleList = cycles
+    const cycleList = cycles
     if(cycleList?.length) return (
     <ul className="flex flex-row text-white">
         <li className=" w-1/3">

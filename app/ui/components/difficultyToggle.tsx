@@ -1,6 +1,6 @@
 'use client'
 
-import { MouseEventHandler, Suspense, useState } from "react"
+import { Suspense, useState } from "react"
 import Image from "next/image"
 
 import frame1 from "../../../public/Frame 4.svg"

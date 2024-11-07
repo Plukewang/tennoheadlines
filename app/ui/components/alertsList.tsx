@@ -7,7 +7,7 @@ interface props{
 }
 
 export default function AlertsList({alerts}: props){
-    let alertList = alerts
+    const alertList = alerts
     if (alertList) return (
         <ul className="my-3">
             {alertList.length ? alertList?.map((alert: MissionInterface, i: number)=>{

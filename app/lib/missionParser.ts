@@ -1,7 +1,6 @@
-import { fetchBounties } from "./data/fetchSyndicates"
-import { sortBounties } from "./data/fetchSyndicates"
+
 import { voidFissure } from "./data/fetchVoidFissures"
-interface mission{
+/*interface mission{
     id: string,
     activation: string,
     startString: string,
@@ -19,7 +18,7 @@ interface mission{
     eta: string,
     isStorm: boolean,
     isHard: boolean
-}
+}*/
 
 export interface bounty{
     missionType: string,
@@ -30,17 +29,17 @@ export interface bounty{
 
 
 export function parseVoidFissures(missions: voidFissure[]): Array<bounty[]>{
-    let lithFissures: bounty[] = []
-    let mesoFissures: bounty[] = []
-    let neoFissures: bounty[] = []
-    let axiFissures: bounty[] = []
-    let kuvaFissures: bounty[] = []
-    let omniaFissures: bounty[] = []
+    const lithFissures: bounty[] = []
+    const mesoFissures: bounty[] = []
+    const neoFissures: bounty[] = []
+    const axiFissures: bounty[] = []
+    const kuvaFissures: bounty[] = []
+    const omniaFissures: bounty[] = []
 
 
 
     //loop through missions prioritizing exterminates, captures, and rescues. If not those, then just add whatever to the list. bounty[0] for easy, bounty[1] for hard
-    for(let mission of missions){
+    for(const mission of missions){
         if(mission.isStorm===true) continue//skip void storms
         switch(mission.tier){
             case("Lith"):
