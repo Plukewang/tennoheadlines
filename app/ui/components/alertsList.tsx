@@ -28,8 +28,7 @@ export default function AlertsList({alerts}: props){
         :
         <ul>
 
-        <h1 className = "text-white">Alert name</h1>
-            <h1 className = "text-white">Alert Expiry</h1>
+        <h1 className = "text-white">No Unique Alerts!</h1>
         </ul>
         } 
         </ul>
@@ -38,8 +37,8 @@ export default function AlertsList({alerts}: props){
     else return (
         <div>
 
-        <h1 className = "text-white">Alert name</h1>
-            <h1 className = "text-white">Alert Expiry</h1>
+        <h1 className = "text-white">No Unique Alerts!</h1>
+
         </div>
     )
 }

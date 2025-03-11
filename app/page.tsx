@@ -36,12 +36,9 @@ export default function Home() {
             <h1 className='text-white font-bold text-2xl p-3'>Special Events</h1>
 
             <h2 className='text-white font-bold text-xl p-3 '>
-                The Quest to Conquer Cancer is still ongoing!
+                Warframe's 12th Anniversary Is Ongoing!
             </h2>
 
-            <h2 className='text-white font-bold text-xl p-3 '>
-                Movemeber: Men&#39;s Health Awareness
-            </h2>
           </div>
 
           <div className='flex items-center flex-col sm: flex-row border-solid border-4 border-[#404040] xl:w-80 h-48 rounded-3xl w-full'>
