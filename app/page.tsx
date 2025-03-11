@@ -36,7 +36,7 @@ export default function Home() {
             <h1 className='text-white font-bold text-2xl p-3'>Special Events</h1>
 
             <h2 className='text-white font-bold text-xl p-3 '>
-                Warframe's 12th Anniversary Is Ongoing!
+                Warframe&apos;s 12th Anniversary Is Ongoing!
             </h2>
 
           </div>
